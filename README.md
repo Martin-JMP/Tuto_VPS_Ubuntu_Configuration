@@ -7,7 +7,7 @@ This guide outlines the steps required to configure a VPS Ubuntu 24.04 (Virtual 
 Update and upgrade the VPS to ensure the latest packages and security updates are installed.
 
 ```bash
-# **_Update the package list_**
+**_Update the package list_**
 sudo apt update
 
 # **_Upgrade installed packages_**
