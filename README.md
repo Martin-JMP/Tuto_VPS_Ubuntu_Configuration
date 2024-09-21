@@ -368,7 +368,7 @@ Kill <<PID>>  µOk change the PID by the number or the code who you can find wit
 
 Cooked by Martin JONCOURT
 
-    JJJ  EEEEE   AAA    NNNN 
+      JJJ  EEEEE   AAA    NNNN 
        JJ  E      A   A  NN  NN
        JJ  EEEE   AAAAA  NN  NN
     J  JJ  E      A   A  NN  NN
