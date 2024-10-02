@@ -6,6 +6,9 @@ Instruction to read the guide :
 - when you see word or text in this <> it's an example you need in real to delete the <> and add your real value.
 - when you see word or text after µ it's more tricky instruction.
 
+More Informations :
+https://www.server-world.info/en/note?os=Ubuntu_24.04&p=download
+
 ## 1. Initial Setup
 
 ### Update and upgrade the VPS to ensure the latest packages and security updates are installed :
