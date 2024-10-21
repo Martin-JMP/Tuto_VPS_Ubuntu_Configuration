@@ -366,7 +366,7 @@ ps aux | grep node
 ps aux | grep node
 ```
 ```bash
-Kill <<PID>>  µOk change the PID by the number or the code who you can find with the instruction above, for exemple Kill <2323>
+Kill PID  µOk change the PID by the number or the code who you can find with the instruction above, for exemple Kill <2323>
 ```
 
 Cooked by Martin JONCOURT
