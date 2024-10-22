@@ -7,6 +7,7 @@ Instruction to read the guide :
 - when you see word or text after µ it's more tricky instruction.
 
 More Informations :
+
 https://www.server-world.info/en/note?os=Ubuntu_24.04&p=download
 
 https://docs.vultr.com/how-to-install-nginx-mysql-php-lemp-stack-on-ubuntu-24-04
