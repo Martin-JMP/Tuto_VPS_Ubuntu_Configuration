@@ -8,6 +8,7 @@ Instruction to read the guide :
 
 More Informations :
 https://www.server-world.info/en/note?os=Ubuntu_24.04&p=download
+https://docs.vultr.com/how-to-install-nginx-mysql-php-lemp-stack-on-ubuntu-24-04
 
 ## 1. Initial Setup
 
