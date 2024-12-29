@@ -187,6 +187,15 @@ sudo nano /etc/nginx/sites-available/<domainname>.conf
 sudo systemctl reload nginx
 ```
 
+### If your https is out verify the certificates and reload the serveur :
+```bash
+sudo certbot certificates
+```
+
+```bash
+sudo systemctl reload nginx
+```
+
 ## 6. Installation of PHP 8.3 :
 
 ```bash
@@ -369,8 +378,17 @@ ps aux | grep node
 ps aux | grep node
 ```
 ```bash
-Kill PID  µOk change the PID by the number or the code who you can find with the instruction above, for exemple Kill <2323>
+kill -9 µOk change the PID by the number or the code who you can find with the instruction above, for exemple kill -9 <2323>
 ```
+
+
+### If your proxy serveur is out verify the certificates in your file, kill the nohup and reload the proxy serveur :
+```bash
+const privateKey = fs.readFileSync('/etc/letsencrypt/archive/<domainname>.<terminaison>/privkey<changenumber>.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/archive/<domainname>.<terminaison>/fullchain<changenumber>.pem', 'utf8');
+```
+
+
 
 Cooked by Martin JONCOURT
 
