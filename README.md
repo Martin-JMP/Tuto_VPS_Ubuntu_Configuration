@@ -137,6 +137,9 @@ cd /etc/nginx/sites-enabled
 sudo ln -s /etc/nginx/sites-available/<domainname>.conf
 ```
 ```bash
+sudo nginx -t
+```
+```bash
 sudo systemctl reload nginx
 ```
 ```bash
@@ -180,7 +183,41 @@ sudo certbot certonly --webroot -w /var/www/<domainname> -d <domainname>.<termin
 ```bash
 sudo nano /etc/nginx/sites-available/<domainname>.conf
 ```
-#### In this file you need to modify partly information with your domain name or like that.
+#### In this file you need to modify partly information with your domain name or like that :
+```bash
+# create new
+server {
+    listen       80;
+    listen       [::]:80;
+    server_name  www.<domainname>.<terminaison like .com or .fr> <domainname>.<terminaison>;
+
+    # Rediriger tout le trafic HTTP vers HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+       listen       443 ssl http2 default_server;
+       listen       [::]:443 ssl http2 default_server; #default_server for the primary website
+       server_name  www.<domainname>.<terminaison> <domainname>.<terminaison>;
+       root         /var/www/domainname>;
+       index index.html index.htm index.nginx-debian.html;
+
+       ssl_certificate "/etc/letsencrypt/live/<domainname>.com/fullchain.pem";
+       ssl_certificate_key "/etc/letsencrypt/live/<domainname>.com/privkey.pem";
+       ssl_session_cache shared:SSL:1m;
+       ssl_session_timeout  10m;
+
+       location / {
+              try_files $uri $uri/ =404;
+       }
+
+       location ~ \.php$ {
+              include snippets/fastcgi-php.conf;
+              fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+       }
+
+}
+```
 
 ### To add the HTTPS you nedd to reload nginx for apply the modifications :
 ```bash
