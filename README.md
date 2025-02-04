@@ -393,9 +393,15 @@ ls
 cat <repositoryname>.pub
 ```
 Go to the GitHub account -> Settings -> SSH and GPG keys -> New SSH Key 
+```bash
 Title = Write a name with the name of the server and the repository name (.e.g: Ubuntu Website)
+```
+```bash
 Key Type = Authentification Key
+```
+```bash
 Key = copy and past the result of the "cat <repositoryname>.pub
+```
 
 ### Save the Private key :
 ```bash
@@ -434,7 +440,7 @@ ssh -T git@github.com
 yes
 
 Now you can see this message :
-"Hi <usergithubname>! You've successfully authenticated, but GitHub does not provide shell access."
+"Hi usergithubname! You've successfully authenticated, but GitHub does not provide shell access."
 
 
 ### Clone the GitHub repository on the VPS :
@@ -472,7 +478,7 @@ sudo git clone git@github.com:<usergithubname>/<repositoryname>.git
 yes
 
 Now you can see this message :
-"Hi <usergithubname>! You've successfully authenticated, but GitHub does not provide shell access."
+"Hi usergithubname! You've successfully authenticated, but GitHub does not provide shell access."
 
 ### Verification if the clone has been well uploaded 
 ```bash
