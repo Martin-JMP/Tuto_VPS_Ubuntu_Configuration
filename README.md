@@ -400,7 +400,7 @@ Title = Write a name with the name of the server and the repository name (.e.g: 
 Key Type = Authentification Key
 ```
 ```bash
-Key = copy and past the result of the "cat <repositoryname>.pub
+Key = copy and past the result of the "cat <repositoryname>.pub"
 ```
 
 ### Save the Private key :
