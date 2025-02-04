@@ -12,6 +12,10 @@ https://www.server-world.info/en/note?os=Ubuntu_24.04&p=download
 
 https://docs.vultr.com/how-to-install-nginx-mysql-php-lemp-stack-on-ubuntu-24-04
 
+https://www.youtube.com/watch?v=V2YYhGn3MGo
+
+https://askubuntu.com/questions/858837/where-is-the-ssh-directory
+
 ## 1. Initial Setup
 
 ### Update and upgrade the VPS to ensure the latest packages and security updates are installed :
@@ -489,7 +493,9 @@ ls
 ```
 
 ### Create the Action for the repository :
+```bash
 Go to GitHub -> <repositoryname> -> Actions -> New Workflow -> set up a workflow yourself
+```
 
 #### Implement this code in the main.yml :
 ```yml
