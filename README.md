@@ -350,7 +350,170 @@ use <databasename>;
 flush privileges;
 ```
 
-## 8. Creation of proxy stystem :
+## 8. Create the link betwwen github repository and VPS with devops CI/CD :
+
+### Go to the repository GitHub and add the actions secrets :
+
+```bash
+HOST = IP of the server
+USERNAME = the name of the user with all the authorizations on the server
+PORT = The name of the port used to connect on the server
+```
+
+### Install the ssh client and server :
+```bash
+sudo apt install openssh-client openssh-server
+```
+```bash
+mkdir ~/.ssh/
+```
+```bash
+cd .ssh/
+```
+```bash
+ls
+```
+
+### Create the public key and the private key :
+```bash
+ssh-keygen -t rsa -b 4096 -C "<personalemail>"
+```
+Enter
+```bash
+<repositoryname>
+```
+Enter
+Enter
+
+```bash
+ls
+```
+### Save the Public key :
+```bash
+cat <repositoryname>.pub
+```
+Go to the GitHub account -> Settings -> SSH and GPG keys -> New SSH Key 
+Title = Write a name with the name of the server and the repository name (.e.g: Ubuntu Website)
+Key Type = Authentification Key
+Key = copy and past the result of the "cat <repositoryname>.pub
+
+### Save the Private key :
+```bash
+cat <repositoryname>
+```
+Go to the repository project GitHub and add the action secret 
+```bash
+SSH_PRIVATE_KEY = put the private key like copy past the result of "cat <repositoryname>"
+```
+
+### Some verification :
+```bash
+cat <repositoryname>.pub >> authorized_keys
+```
+```bash
+verfication :
+```
+```bash
+cat authorized_keys
+```
+```bash
+eval "$(ssh-agent -s)"
+```
+```bash
+ssh-add ~/.ssh/<repositoryname>
+```
+```bash
+ssh-add -l
+```
+```bash
+cd
+```
+```bash
+ssh -T git@github.com
+```
+yes
+
+Now you can see this message :
+"Hi <usergithubname>! You've successfully authenticated, but GitHub does not provide shell access."
+
+
+### Clone the GitHub repository on the VPS :
+#### Go to the WWW folder :
+```bash
+cd
+```
+```bash
+cd /var/www
+```
+```bash
+ls
+```
+If you see already the name of the repository name, please delete the folder before the cloning : 
+```bash
+sudo rm -r <repositoryname>
+```
+```bash
+ls
+```
+```bash
+cd
+```
+```bash
+sudo chown -R <username>: /var/www
+```
+```bash
+cd /var/www/
+```
+
+Now you can clone the repository :
+```bash
+sudo git clone git@github.com:<usergithubname>/<repositoryname>.git
+```
+yes
+
+Now you can see this message :
+"Hi <usergithubname>! You've successfully authenticated, but GitHub does not provide shell access."
+
+### Verification if the clone has been well uploaded 
+```bash
+cd /var/www/<repositoryname>
+```
+```bash
+ls
+```
+
+### Install the package you needed to improve you project :
+```bash
+sudo apt update
+```
+```bash
+sudo apt upgrade
+```
+
+### Change some user authorization :
+```bash
+cd
+```
+```bash
+sudo chown <username> /var/www/<repositoryname>/
+```
+```bash
+ls -l
+```
+```bash
+cd /var/www/
+```
+```bash
+ls -l
+```
+```bash
+sudo chmod 777 /var/www/<repositoryname>/
+```
+```bash
+ls -l
+```
+
+## 9. Creation of proxy stystem :
 
 ```bash
 sudo ufw status
