@@ -488,6 +488,67 @@ cd /var/www/<repositoryname>
 ls
 ```
 
+### Create the Action for the repository :
+Go to GitHub -> <repositoryname> -> Actions -> New Workflow -> set up a workflow yourself
+
+#### Implement this code in the main.yml :
+```yml
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:       
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            # Print current SSH keys
+            echo "Checking SSH keys..."
+            ls -l ~/.ssh
+            
+            # Check if the SSH key exists
+            if [ -f ~/.ssh/<repositoryname> ]; then
+              eval "$(ssh-agent -s)"
+              ssh-add ~/.ssh/<repositoryname>
+      
+              # Verify if the key was added
+              echo "Loaded SSH keys:"
+              ssh-add -l
+            else
+              echo "SSH key not found!"
+              exit 1
+            fi
+            
+            # Test SSH connection with verbose output
+            ssh -vT git@github.com
+      
+            # Navigate to the project directory
+            cd /var/www/<repositoryname>/ || exit 1
+            
+            # Pull the latest code
+            echo "Pulling latest code from repository..."
+            git pull origin main || exit 1
+            
+            # Show the current branch and status
+            echo "Current branch and status:"
+            git branch
+            git status
+```
+
+
 ### Install the package you needed to improve you project :
 ```bash
 sudo apt update
