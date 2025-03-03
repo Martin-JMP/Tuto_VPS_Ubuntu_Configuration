@@ -200,9 +200,21 @@ server {
 }
 
 server {
+       listen       443 ssl http2;
+       listen       [::]:443 ssl http2;
+       server_name  www.<domainname>.<terminaison>;
+
+       ssl_certificate "/etc/letsencrypt/live/<domainname>.<terminaison>/fullchain.pem";
+       ssl_certificate_key "/etc/letsencrypt/live/<domainname>.<terminaison>/privkey.pem";
+
+       # Redirection de www.cefinan.com vers cefinan.com en HTTPS
+       return 301 https://<domainname>.<terminaison>$request_uri;
+}
+
+server {
        listen       443 ssl http2 default_server;
        listen       [::]:443 ssl http2 default_server; #default_server for the primary website
-       server_name  www.<domainname>.<terminaison> <domainname>.<terminaison>;
+       server_name  <domainname>.<terminaison>;
        root         /var/www/domainname>;
        index index.html index.htm index.nginx-debian.html;
 
