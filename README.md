@@ -18,6 +18,14 @@ https://askubuntu.com/questions/858837/where-is-the-ssh-directory
 
 ## 1. Initial Setup
 
+### Access to the server by the Command line 
+```bash
+ssh root@<ipV4 server> 
+```
+#### For exemple
+```bash
+ssh root@12.34.567.890
+```
 ### Update and upgrade the VPS to ensure the latest packages and security updates are installed :
 
 ```bash
