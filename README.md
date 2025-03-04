@@ -35,7 +35,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-### Integrate inital user :
+### Integrate initial user :
 
 ```bash
 passwd
