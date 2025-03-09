@@ -653,7 +653,7 @@ Location /api {
 }
 ```
 
-## 9. Run any file, code in background of your server :
+## 10. Run any file, code in background of your server :
 
 ```bash
 cd <your path with the file proxy.js>
@@ -681,7 +681,37 @@ const privateKey = fs.readFileSync('/etc/letsencrypt/archive/<domainname>.<termi
 const certificate = fs.readFileSync('/etc/letsencrypt/archive/<domainname>.<terminaison>/fullchain<changenumber>.pem', 'utf8');
 ```
 
+## 11. Restart Server :
+```bash
+systemctl status mysql
+systemctl status nginx
+systemctl status node
+```
 
+```bash
+sudo journalctl -u nginx --no-pager | tail -20
+```
+
+```bash
+cd /var/www/
+```
+
+```bash
+pm2 list
+```
+
+```bash
+pm2 delete <name_project>
+```
+
+```bash
+npm install
+npm run build
+```
+
+```bash
+pm2 start npm --name "<next-name-repository>" -- start
+```
 
 Cooked by Martin JONCOURT
 
