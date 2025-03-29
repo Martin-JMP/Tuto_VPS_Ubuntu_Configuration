@@ -84,7 +84,7 @@ sudo systemctl restart ssh
 
 #### Check the tcp autorization for your new number port :
 ```bash
-sudo afw allow <numberport>/tcp
+sudo ufw allow <numberport>/tcp
 ```
 
 ## 2. Implementation of website by Nginx :
