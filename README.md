@@ -497,7 +497,7 @@ cd /var/www/
 
 Now you can clone the repository :
 ```bash
-sudo git clone git@github.com:<usergithubname>/<repositoryname>.git
+sudo -E git clone git@github.com:<usergithubname>/<repositoryname>.git
 ```
 yes
 
